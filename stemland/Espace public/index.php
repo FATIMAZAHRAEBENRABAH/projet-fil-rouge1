@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
+include "DevisManager.php";
+// include "Hotels.php";
+// Trouver tous les employés depuis la base de données 
+$DevisManager = new DevisManager();
+
+
+if(!empty($_POST)){
+	$Devis = new Devis;
+	
+	
+	$Devis->setNom($_POST['Nom']);
+	$Devis->setPrenom($_POST['Prenom']);
+	$Devis->setTel($_POST['Tel']);
+	$Devis->setEmail($_POST['Email']);
+	$Devis->setDescription ($_POST['Description']);
+	$DevisManager->Ajouter($Devis);
+
+	
+	
+}
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,22 +93,22 @@
                         <!-- navbar -->
 
                         <!-- logo -->
-                        <a href="index.html" aria-label="logo image"><img src="assets/images/logo-removebg.png" width="153" alt=""></a>
+                        <a href="index.php" aria-label="logo image"><img src="assets/images/logo-removebg.png" width="153" alt=""></a>
                         <span class="fa fa-bars mobile-nav__toggler"></span>
                     </div><!-- /.logo-box -->
                     <ul class="main-menu__list">
                         <li class="dropdown">
                             
                             <!-- menu -->
-                            <a href="index.html">Accueil</a>
+                            <a href="index.php">Accueil</a>
                         </li>
                         <li class="dropdown"><a href="services.html">Nos services</a>
                         </li>
                         <li>
-                            <a href="devis.html">demande devis</a>
+                            <a href="page-devis.php">demande devis</a>
                         </li>
                         <li class="dropdown">
-                            <a href="project-details.html">Nos réalisations</a>
+                            <a href="project-details.php">Nos réalisations</a>
                         </li>
                     </ul>
                     <!-- /.main-menu__list -->
@@ -376,22 +403,22 @@
                         </div><!-- /.contact-two__content -->
                     </div><!-- /.col-sm-12 col-md-12 col-lg-12 col-xl-4 -->
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
-                        <form action="assets/inc/sendemail.php" class="contact-one__form contact-form-validated">
+                        <form action="" class="contact-one__form contact-form-validated " method="post">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <input type="text" name="nom" placeholder="Nom">
+                                    <input type="text" name="Nom" placeholder="Nom">
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-lg-12">
-                                    <input type="text" name="prenom" placeholder="Prénom">
+                                    <input type="text" name="Prenom" placeholder="Prénom">
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-lg-12">
-                                    <input type="email" name="email" placeholder="Email">
+                                    <input type="email" name="Email" placeholder="Email">
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-lg-12">
-                                    <input type="text" name="tel" placeholder="Tel"> 
+                                    <input type="text" name="Tel" placeholder="Tel"> 
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-lg-12">
-                                    <textarea name="message" placeholder="Description"></textarea>
+                                    <textarea name="Description" placeholder="Description"></textarea>
                                 </div><!-- /.col-lg-12 -->
                                 <div class="col-lg-12">
                                     <button type="submit" class="thm-btn">Envoyer la demande</button><!-- /.thm-btn -->

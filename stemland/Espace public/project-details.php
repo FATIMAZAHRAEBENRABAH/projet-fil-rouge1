@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+    include "RealisationsManager.php";
+    // Trouver tous les employés depuis la base de données 
+    $realisationsManager = new RealisationsManager();
+    $data = $realisationsManager->afficher_realisations();
+?>
+
 
 <head>
     <meta charset="UTF-8">
@@ -66,22 +73,22 @@
                         <!-- navbar -->
 
                         <!-- logo -->
-                        <a href="index.html" aria-label="logo image"><img src="assets/images/logo-removebg.png" width="153" alt=""></a>
+                        <a href="index.php" aria-label="logo image"><img src="assets/images/logo-removebg.png" width="153" alt=""></a>
                         <span class="fa fa-bars mobile-nav__toggler"></span>
                     </div><!-- /.logo-box -->
                     <ul class="main-menu__list">
                         <li class="dropdown">
                             
                             <!-- menu -->
-                            <a href="index.html">Accueil</a>
+                            <a href="index.php">Accueil</a>
                         </li>
                         <li class="dropdown"><a href="services.html">Nos services</a>
                         </li>
                         <li>
-                            <a href="devis.html">demande devis</a>
+                            <a href="page-devis.php">demande devis</a>
                         </li>
                         <li class="dropdown">
-                            <a href="project-details.html">Nos réalisations</a>
+                            <a href="project-details.php">Nos réalisations</a>
                         </li>
                     </ul>
                     <!-- /.main-menu__list -->
@@ -107,87 +114,16 @@
 
         <section class="project-details">
             <div class="container">
+            <?php
+                    foreach($data as $value){
+            ?>
                 <img src="assets/images/projects/project-d-1-1.jpg" class="img-fluid" alt="">
                 
-                <!-- <ul class="list-unstyled project-details__list">
-                    <li>
-                        <span>Date:
-                        </span>
-                        20 July, 2020
-                    </li>
-                    <li>
-                        <span>Client:
-                        </span>
-                        Mike Hardson
-                    </li>
-                    <li>
-                        <span>Category:
-                        </span>
-                        Agriculture, Eco
-                    </li>
-                    <li>
-                        <span>Service:
-                        </span>
-                        Organic Products
-                    </li>
-                </ul>/.list-unstyled project-details__list -->
-
-                <h2>Harvest Innovations</h2>
-                <p>
-                    Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum quia quaed
-                    inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim var
-                    sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the ndustry standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not
-                    only five centuries. Lorem Ipsum is simply dummy text of the new design printng and type setting Ipsum Take
-                    a look at our round up of the best shows coming soon to your telly box has been the is industrys. When an
-                    unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not
-                    only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets containing.
-                </p>
+                <h2><?= $value->getTitre() ?></h2>
+                <p><?= $value->getDescription() ?></p>
+                <?php }?>
             </div><!-- /.container -->
         </section><!-- /.project-details -->
-
-        <div class="projects-one project-page">
-            <div class="container">
-                <hr />
-                <div class="block-title text-center">
-                    <div class="block-title__image"></div><!-- /.block-title__image -->
-                    <p>Closed projects</p>
-                    <h3>Latest Projects List</h3>
-                </div><!-- /.block-title -->
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="projects-one__single">
-                            <img src="assets/images/projects/project-1-1.jpg" alt="">
-                            <div class="projects-one__content">
-                                <h3>Harvest Innovation</h3>
-                                <a href="project-details.html" class="projects-one__button"><i class="agrikon-icon-right-arrow"></i></a><!-- /.projects-one__button -->
-                            </div><!-- /.projects-one__content -->
-                        </div><!-- /.projects-one__single -->
-                    </div><!-- /.col-sm-12 -->
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="projects-one__single">
-                            <img src="assets/images/projects/project-1-2.jpg" alt="">
-                            <div class="projects-one__content">
-                                <h3>Harvest Innovation</h3>
-                                <a href="project-details.html" class="projects-one__button"><i class="agrikon-icon-right-arrow"></i></a><!-- /.projects-one__button -->
-                            </div><!-- /.projects-one__content -->
-                        </div><!-- /.projects-one__single -->
-                    </div><!-- /.col-sm-12 -->
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="projects-one__single">
-                            <img src="assets/images/projects/project-1-3.jpg" alt="">
-                            <div class="projects-one__content">
-                                <h3>Harvest Innovation</h3>
-                                <a href="project-details.html" class="projects-one__button"><i class="agrikon-icon-right-arrow"></i></a><!-- /.projects-one__button -->
-                            </div><!-- /.projects-one__content -->
-                        </div><!-- /.projects-one__single -->
-                    </div><!-- /.col-sm-12 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </div><!-- /.projects-one -->
-
 
         <!-- footer -->
         <footer class="site-footer">
